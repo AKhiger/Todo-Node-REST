@@ -5,8 +5,8 @@ import {
     getTodoById,
     deleteTodo,
     updateTodo,
-    setTodo
-} from './controllers/Todo.js';
+    createTodo
+} from './controllers/Todo.ts';
 
 const app = express();
 
@@ -22,24 +22,24 @@ async function asyncFunctionWrapper(func, ...args) {
 }
 
 // Routes
-app.get('/todo/:id', async (req, res) => {
-    await asyncFunctionWrapper(getTodoById, res, req);
+app.get('/todos/:id', async (req, res) => {
+    await asyncFunctionWrapper(getTodoById,  req, res);
 });
 
 app.get('/todos', async (req, res) => {
-    await asyncFunctionWrapper(getTodos, res, req);
+    await asyncFunctionWrapper(getTodos, req, res);
 });
 
-app.post('/todo', async (req, res) => {
-    await asyncFunctionWrapper(setTodo, res, req);
+app.post('/todos', async (req, res) => {
+    await asyncFunctionWrapper(createTodo,req, res);
 });
 
-app.put('/todo/:id', async (req, res) => {
-    await asyncFunctionWrapper(updateTodo, res, req);
+app.put('/todos/:id', async (req, res) => {
+    await asyncFunctionWrapper(updateTodo, req, res);
 });
 
-app.delete('/todo/:id', async (req, res) => {
-    await asyncFunctionWrapper(deleteTodo, res, req);
+app.delete('/todos/:id', async (req, res) => {
+    await asyncFunctionWrapper(deleteTodo, req, res);
 });
 
 // Export app for server.js
