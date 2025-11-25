@@ -1,6 +1,6 @@
 
 import { createServer } from 'http';
-import app from './src/App.js';
+import app from './App';
 
 const PORT = 3000;
 
